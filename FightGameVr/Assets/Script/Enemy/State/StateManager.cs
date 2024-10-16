@@ -14,6 +14,8 @@ public class StateManager : MonoBehaviour
     [HideInInspector] public int currentHp;
     [HideInInspector] public NavMeshAgent agent;
 
+    public Transform playerTransform;
+
 
     private void Start()
     {
