@@ -4,7 +4,7 @@ public class AttackState : State
 {
     public override void EnterState(StateManager enemy)
     {
-        Debug.Log("ROOOOOAR");
+        Debug.Log("AttackState");
     }
 
     public override void UpdateCurrentState(StateManager enemy)

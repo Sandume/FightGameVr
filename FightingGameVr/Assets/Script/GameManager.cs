@@ -1,16 +1,38 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+  
+    static private GameManager instance;
+
+    public List<Vector3> coverPoint = new List<Vector3>();
+    static public GameManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                GameObject obj = new GameObject(nameof(GameManager));
+                obj.AddComponent<GameManager>();
+            }
+
+            return instance;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            transform.parent = null;
+            DontDestroyOnLoad(instance.gameObject);
+        }
+        else
+        {
+            Destroy(instance);
+            return;
+        }
     }
 }
