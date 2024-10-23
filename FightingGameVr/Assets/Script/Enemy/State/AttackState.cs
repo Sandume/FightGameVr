@@ -9,6 +9,7 @@ public class AttackState : State
 
     public override void UpdateCurrentState(StateManager enemy)
     {
-        throw new System.NotImplementedException();
+        if (Vector3.Distance(enemy.playerTransform.position, enemy.transform.position) < enemy.stat.range) 
+        { }
     }
 }
