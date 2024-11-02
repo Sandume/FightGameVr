@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3c01f3b8361bd5e469172b0fbb6a67f5
+guid: 05ec01ac93df9684d868366b8466f6f7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: StandingToCrouch
+      name: Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
