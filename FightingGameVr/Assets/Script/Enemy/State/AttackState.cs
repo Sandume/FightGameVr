@@ -17,7 +17,6 @@ public class AttackState : State
         if (timerAnimationAttack >= 1f)
         {
             enemy.Attack();
-            Debug.Log("mougana");
             enemy.SwitchState(enemy.attackState);
         }
     }
