@@ -15,6 +15,7 @@ public class RunState : State
     {
         if (Vector3.Distance(enemy.agent.pathEndPosition, enemy.transform.position) <= 1.05f)
         {
+            enemy.animator.SetBool("IsRunning", false);
             enemy.SwitchState(enemy.attackState);
         }
     }

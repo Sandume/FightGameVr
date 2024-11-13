@@ -15,9 +15,12 @@ public class StateManager : MonoBehaviour , IDamageble
     [HideInInspector] public NavMeshAgent agent;
 
     public Transform playerTransform;
+    [SerializeField] private GameObject arrowPrefabs;
+    [SerializeField] private Transform arrowLunchTransform;
 
 
-    private void Start()
+
+   private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         currentHp = stat.maxHp;
@@ -30,6 +33,7 @@ public class StateManager : MonoBehaviour , IDamageble
     {
         currentState.UpdateCurrentState(this);
         CheckDeath();
+        
     }
 
     public void SwitchState (State state)
@@ -49,5 +53,10 @@ public class StateManager : MonoBehaviour , IDamageble
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Attack()
+    {
+        Instantiate(arrowPrefabs, arrowLunchTransform.position, arrowLunchTransform.rotation);
     }
 }

@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class AttackState : State
 {
+    private float timerAnimationAttack;
     public override void EnterState(StateManager enemy)
     {
-       
+        enemy.animator.SetBool("IsAttackingDistance", true);
+        timerAnimationAttack = 0f;
+        enemy.transform.LookAt(enemy.playerTransform);
     }
 
     public override void UpdateCurrentState(StateManager enemy)
     {
-        if (Vector3.Distance(enemy.playerTransform.position, enemy.transform.position) < enemy.stat.range) 
+        timerAnimationAttack += Time.deltaTime;
+        // 1 = duration of attack animation
+        if (timerAnimationAttack >= 1f)
         {
+            enemy.Attack();
+            Debug.Log("mougana");
+            enemy.SwitchState(enemy.attackState);
         }
     }
 }
