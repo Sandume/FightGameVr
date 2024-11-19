@@ -31,11 +31,10 @@ public class Sword : MonoBehaviour
     //}
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
         if (other.transform.GetComponent<IDamageble>() != null)
         {
 
-            other.transform.GetComponent<IDamageble>().Hit(50000);
+            other.transform.GetComponent<IDamageble>().Hit(50);
         }
     }
 }

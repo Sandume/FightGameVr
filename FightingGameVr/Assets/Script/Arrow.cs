@@ -22,6 +22,9 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("Outch");
         }
-        Destroy(gameObject);
+        if (collision.transform.tag != "Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }

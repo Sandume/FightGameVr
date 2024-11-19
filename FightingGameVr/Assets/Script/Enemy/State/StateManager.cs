@@ -17,9 +17,7 @@ public class StateManager : MonoBehaviour , IDamageble
     public Transform playerTransform;
     [SerializeField] private GameObject arrowPrefabs;
     [SerializeField] private Transform arrowLunchTransform;
-
-
-
+    
    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -33,7 +31,6 @@ public class StateManager : MonoBehaviour , IDamageble
     {
         currentState.UpdateCurrentState(this);
         CheckDeath();
-        
     }
 
     public void SwitchState (State state)
