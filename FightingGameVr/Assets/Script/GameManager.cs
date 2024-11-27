@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-  
+    public struct CoverPoint
+    {
+        public Vector3 position;
+        public bool isOccupied;
+    }
     static private GameManager instance;
 
-    public List<Vector3> coverPoint = new List<Vector3>();
+    public List<CoverPoint> coverPoint = new List<CoverPoint>();
     static public GameManager Instance
     {
         get

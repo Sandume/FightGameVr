@@ -5,7 +5,10 @@ public class CoverPoint : MonoBehaviour
 {
     void Start()
     {
-        GameManager.Instance.coverPoint.Add(transform.position);
+        GameManager.CoverPoint coverPoint;
+        coverPoint.position = transform.position;
+        coverPoint.isOccupied = false;
+        GameManager.Instance.coverPoint.Add(coverPoint);
     }
 
     private void OnDrawGizmos()

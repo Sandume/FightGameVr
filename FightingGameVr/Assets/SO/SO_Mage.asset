@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   speed: 3
-  range: 10
+  range: 2
   type: 0
   dammage: 15
