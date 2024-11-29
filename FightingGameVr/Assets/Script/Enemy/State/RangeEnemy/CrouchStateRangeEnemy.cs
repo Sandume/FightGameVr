@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
-public class CrouchState : State
+public class CrouchStateRangeEnemy : StateRangeEnemy
 {
     enum StateCrounch
     {
@@ -14,7 +14,7 @@ public class CrouchState : State
     private float timerAnimation;
     private float maxTimeIdle;
 
-    public override void EnterState(StateManager enemy)
+    public override void EnterState(StateManagerRangeEnemy enemy)
     {
         enemy.animator.SetBool("IsCrouching", true);
         timerAnimation = 0f;
@@ -22,7 +22,7 @@ public class CrouchState : State
         maxTimeIdle = 0f;
     }
 
-    public override void UpdateCurrentState(StateManager enemy)
+    public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
         timerAnimation += Time.deltaTime;
 

@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class AttackState : State
+public class AttackStateRangeEnemy : StateRangeEnemy
 {
     private float timerAnimationAttack;
-    public override void EnterState(StateManager enemy)
+    public override void EnterState(StateManagerRangeEnemy enemy)
     {
         enemy.animator.SetBool("IsAttackingDistance", true);
         timerAnimationAttack = 0f;
         enemy.transform.LookAt(enemy.playerTransform);
     }
 
-    public override void UpdateCurrentState(StateManager enemy)
+    public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
         timerAnimationAttack += Time.deltaTime;
         // 1 = duration of attack animation

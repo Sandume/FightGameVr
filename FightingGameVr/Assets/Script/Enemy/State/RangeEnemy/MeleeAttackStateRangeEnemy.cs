@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class MeleeAttackState : State
+public class MeleeAttackStateRangeEnemy : StateRangeEnemy
 {
     private float timerAnimationAttack;
-    public override void EnterState(StateManager enemy)
+    public override void EnterState(StateManagerRangeEnemy enemy)
     {
         enemy.animator.SetBool("IsAttackingMelee", true);
         timerAnimationAttack = 0f;
     }
 
-    public override void UpdateCurrentState(StateManager enemy)
+    public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
         timerAnimationAttack += Time.deltaTime; 
 

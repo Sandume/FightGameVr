@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StateManager : MonoBehaviour , IDamageble
+public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
 {
 
-    State currentState;
-    public RunState runState = new RunState();
-    public IdleState idleState = new IdleState();
-    public AttackState attackState = new AttackState();
-    public CrouchState crouchState = new CrouchState();
-    public MeleeAttackState meleeAttackState = new MeleeAttackState();
+    StateMeleeEnemy currentState;
+    public RunStateMeleeEnemy runState = new RunStateMeleeEnemy();
+    public IdleStateMeleeEnemy idleState = new IdleStateMeleeEnemy();
+    public AttackStateMeleeEnemy attackState = new AttackStateMeleeEnemy();
     public SO_EnemyStat stat;
 
     [HideInInspector] public Animator animator;
@@ -38,7 +36,7 @@ public class StateManager : MonoBehaviour , IDamageble
         CheckDeath();
     }
 
-    public void SwitchState (State state)
+    public void SwitchState (StateMeleeEnemy state)
     {
         currentState = state;
         state.EnterState(this);

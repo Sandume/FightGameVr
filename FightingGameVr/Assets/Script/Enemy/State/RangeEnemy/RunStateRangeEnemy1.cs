@@ -1,33 +1,32 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RunState : State
+public class RunStateMeleeEnemy : StateMeleeEnemy
 {
     Vector3 destination;
-    public override void EnterState(StateManager enemy)
+    public override void EnterState(StateManagerMeleeEnemy enemy)
     {
-        destination = SearchCover(enemy);
         enemy.agent.SetDestination(destination);
         enemy.animator.SetBool("IsRunning", true);
     }
 
-    public override void UpdateCurrentState(StateManager enemy)
+    public override void UpdateCurrentState(StateManagerMeleeEnemy enemy)
     {
-        if (Vector3.Distance(enemy.agent.pathEndPosition, enemy.transform.position) <= 1.05f)
-        {
-            enemy.animator.SetBool("IsRunning", false);
-            if (Random.Range(0, 1) == 0)
-            {
-                enemy.SwitchState(enemy.crouchState);
-            }
-            else
-            {
-                enemy.SwitchState(enemy.attackState);
-            }
-        }
+        //if (Vector3.Distance(enemy.agent.pathEndPosition, enemy.transform.position) <= 1.05f)
+        //{
+        //    enemy.animator.SetBool("IsRunning", false);
+        //    if (Random.Range(0, 1) == 0)
+        //    {
+        //        enemy.SwitchState(enemy.crouchState);
+        //    }
+        //    else
+        //    {
+        //        enemy.SwitchState(enemy.attackState);
+        //    }
+        //}
     }
 
-    Vector3 SearchCover(StateManager enemy)
+    Vector3 SearchCover(StateManagerRangeEnemy enemy)
     {
         if (enemy.isFleeing)
         {
