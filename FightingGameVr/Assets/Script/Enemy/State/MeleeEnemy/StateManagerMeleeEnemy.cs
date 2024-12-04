@@ -15,12 +15,7 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
     [HideInInspector] public NavMeshAgent agent;
 
     public Transform playerTransform;
-    [SerializeField] private GameObject arrowPrefabs;
-    [SerializeField] private Transform arrowLunchTransform;
 
-    public GameManager.CoverPoint coverPointUsed;
-    public bool isFleeing;
-    
    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,11 +48,5 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
         {
             Destroy(gameObject);
         }
-    }
-
-    //Obligatoire de le laisser ici pour le instantiate (monobehavior)
-    public void Attack()
-    {
-        Instantiate(arrowPrefabs, arrowLunchTransform.position, arrowLunchTransform.rotation);
     }
 }
