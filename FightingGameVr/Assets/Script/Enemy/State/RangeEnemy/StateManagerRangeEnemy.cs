@@ -34,12 +34,14 @@ public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
 
     private void Update()
     {
+        //Debug.Log(currentState);
         currentState.UpdateCurrentState(this);
         CheckDeath();
     }
 
     public void SwitchState (StateRangeEnemy state)
     {
+        Debug.Log(state);
         currentState = state;
         state.EnterState(this);
     }

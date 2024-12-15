@@ -22,7 +22,7 @@ public class AttackStateRangeEnemy : StateRangeEnemy
             {
                 enemy.SwitchState(enemy.meleeAttackState);
             }
-            if (Random.Range(0, 4) == 0)
+            else if (Random.Range(0, 4) == 0)
             {
                 enemy.SwitchState(enemy.crouchState);
             }
