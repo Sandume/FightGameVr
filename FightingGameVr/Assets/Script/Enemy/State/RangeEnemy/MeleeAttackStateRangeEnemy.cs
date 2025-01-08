@@ -12,6 +12,7 @@ public class MeleeAttackStateRangeEnemy : StateRangeEnemy
 
     public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
+        enemy.LookAtPlayer();
         timerAnimationAttack += Time.deltaTime;
         Debug.Log("Stop melee attack");
         // 1 = duration of attack animation

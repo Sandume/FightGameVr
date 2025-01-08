@@ -7,11 +7,11 @@ public class AttackStateRangeEnemy : StateRangeEnemy
     {
         enemy.animator.SetBool("IsAttackingDistance", true);
         timerAnimationAttack = 0f;
-        enemy.transform.LookAt(enemy.playerTransform);
     }
 
     public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
+        enemy.LookAtPlayer();
         timerAnimationAttack += Time.deltaTime;
         // 1 = duration of attack animation
         if (timerAnimationAttack >= 1.033f)

@@ -24,6 +24,7 @@ public class CrouchStateRangeEnemy : StateRangeEnemy
 
     public override void UpdateCurrentState(StateManagerRangeEnemy enemy)
     {
+        enemy.LookAtPlayer();
         timerAnimation += Time.deltaTime;
 
         switch (currentState)

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
+public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
 {
 
     StateRangeEnemy currentState;
@@ -19,11 +19,12 @@ public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
     public Transform playerTransform;
     [SerializeField] private GameObject arrowPrefabs;
     [SerializeField] private Transform arrowLunchTransform;
+    [SerializeField] public float rotationSpeed = 5;
 
     public GameManager.CoverPoint coverPointUsed;
     public bool isFleeing;
-    
-   private void Start()
+
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         currentHp = stat.maxHp;
@@ -39,7 +40,7 @@ public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
         CheckDeath();
     }
 
-    public void SwitchState (StateRangeEnemy state)
+    public void SwitchState(StateRangeEnemy state)
     {
         Debug.Log(state);
         currentState = state;
@@ -51,9 +52,9 @@ public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
         currentHp -= damage;
     }
 
-    public void CheckDeath() 
+    public void CheckDeath()
     {
-        if(currentHp <= 0) 
+        if (currentHp <= 0)
         {
             Destroy(gameObject);
         }
@@ -63,5 +64,17 @@ public class StateManagerRangeEnemy : MonoBehaviour , IDamageble
     public void Attack()
     {
         Instantiate(arrowPrefabs, arrowLunchTransform.position, arrowLunchTransform.rotation);
+    }
+
+    public void LookAtPlayer()
+    {
+        Vector3 direction = playerTransform.position - transform.position;
+        direction.y = 0; // Éviter la rotation verticale
+
+        // Calculer la rotation cible
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        // Appliquer une rotation douce vers la cible
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }
