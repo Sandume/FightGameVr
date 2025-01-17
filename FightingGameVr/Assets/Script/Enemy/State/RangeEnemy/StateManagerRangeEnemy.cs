@@ -15,13 +15,13 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
     [HideInInspector] public Animator animator;
     [HideInInspector] public int currentHp;
     [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Transform playerTransform;
 
-    public Transform playerTransform;
     [SerializeField] private GameObject arrowPrefabs;
     [SerializeField] private Transform arrowLunchTransform;
     [SerializeField] public float rotationSpeed = 5;
 
-    public GameManager.CoverPoint coverPointUsed;
+    public int idCoverPointUsed = -1;
     public bool isFleeing;
 
     private void Start()
@@ -31,6 +31,8 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
         currentState = idleState;
         animator = GetComponentInChildren<Animator>();
         currentState.EnterState(this);
+        //A changer pour que ca soit plus scalable
+        playerTransform = GameObject.Find("Player").transform;
     }
 
     private void Update()
@@ -56,6 +58,11 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
     {
         if (currentHp <= 0)
         {
+            WaveManager.Instance.nbEnnemiAlive--;
+            if (idCoverPointUsed != -1)
+            {
+                GameManager.Instance.coverPoint[idCoverPointUsed].isOccupied = false;
+            }
             Destroy(gameObject);
         }
     }

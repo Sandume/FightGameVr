@@ -29,53 +29,57 @@ public class RunStateRangeEnemy : StateRangeEnemy
 
     Vector3 SearchCover(StateManagerRangeEnemy enemy)
     {
+        if (enemy.idCoverPointUsed != -1)
+        {
+            GameManager.Instance.coverPoint[enemy.idCoverPointUsed].isOccupied = false;
+        }
         if (enemy.isFleeing)
         {
-            enemy.coverPointUsed.isOccupied = false;
             float lenght = float.MinValue;
             Vector3 furthestCoverPoint = Vector3.zero;
-            foreach (var actualCoverPoint in GameManager.Instance.coverPoint)
+            for (int i =0;i< GameManager.Instance.coverPoint.Count;i++)
             {
-                if (!actualCoverPoint.isOccupied)
+                if (!GameManager.Instance.coverPoint[i].isOccupied)
                 {
-                    float distance = Vector3.Distance(actualCoverPoint.position, enemy.transform.position);
+                    float distance = Vector3.Distance(GameManager.Instance.coverPoint[i].position, enemy.transform.position);
                     if (distance > lenght)
                     {
                         lenght = distance;
-                        furthestCoverPoint = actualCoverPoint.position;
-                        enemy.coverPointUsed = actualCoverPoint;
+                        furthestCoverPoint = GameManager.Instance.coverPoint[i].position;
+                        enemy.idCoverPointUsed = i;
                     }
                 }
             }
-            enemy.coverPointUsed.isOccupied = true;
+            GameManager.Instance.coverPoint[enemy.idCoverPointUsed].isOccupied = true;
             enemy.isFleeing = false;
             return furthestCoverPoint;
         }
-        else 
-        { 
-        float lenght = float.MaxValue;
-        Vector3 nearestCoverPoint = Vector3.zero;
-        foreach (var actualCoverPoint in GameManager.Instance.coverPoint)
+        else
         {
-            if (!actualCoverPoint.isOccupied)
+            float lenght = float.MaxValue;
+            Vector3 nearestCoverPoint = Vector3.zero;
+            for (int i = 0; i < GameManager.Instance.coverPoint.Count; i++)
             {
-                float distance = Vector3.Distance(actualCoverPoint.position, enemy.transform.position);
-                if (distance < lenght)
+                if (!GameManager.Instance.coverPoint[i].isOccupied)
                 {
-                    lenght = distance;
-                    nearestCoverPoint = actualCoverPoint.position;
-                    enemy.coverPointUsed = actualCoverPoint;
+                    float distance = Vector3.Distance(GameManager.Instance.coverPoint[i].position, enemy.transform.position);
+                    if (distance < lenght)
+                    {
+                        lenght = distance;
+                        nearestCoverPoint = GameManager.Instance.coverPoint[i].position;
+                        enemy.idCoverPointUsed = i;
+                    }
                 }
             }
-        }
-        enemy.coverPointUsed.isOccupied = true;
-        if (Vector3.Distance(enemy.playerTransform.position, enemy.transform.position) < lenght)
-        {
-            enemy.coverPointUsed.isOccupied = false;
-            enemy.SwitchState(enemy.attackState);
-            return enemy.transform.position;
-        }
-        return nearestCoverPoint;
+            GameManager.Instance.coverPoint[enemy.idCoverPointUsed].isOccupied = true;
+
+            //if (Vector3.Distance(enemy.playerTransform.position, enemy.transform.position) < lenght)
+            //{
+            //    GameManager.Instance.coverPoint[enemy.idCoverPointUsed].isOccupied = true;
+            //    enemy.SwitchState(enemy.attackState);
+            //    return enemy.transform.position;
+            //}
+            return nearestCoverPoint;
         }
     }
 }

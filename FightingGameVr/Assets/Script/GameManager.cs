@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public struct CoverPoint
+    public class CoverPoint
     {
         public Vector3 position;
         public bool isOccupied;
     }
+
     static private GameManager instance;
 
     public List<CoverPoint> coverPoint = new List<CoverPoint>();

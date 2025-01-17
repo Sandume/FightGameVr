@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f3dd9b7233d24ce4d95c1846a2277b60
+guid: 6fea6a663d7a2b74c86a0bc1108a8187
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Run
+      name: run
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

@@ -14,7 +14,7 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
     [HideInInspector] public int currentHp;
     [HideInInspector] public NavMeshAgent agent;
 
-    public Transform playerTransform;
+    [HideInInspector] public Transform playerTransform;
 
    private void Start()
     {
@@ -22,7 +22,10 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
         currentHp = stat.maxHp;
         currentState = idleState;
         animator = GetComponentInChildren<Animator>();
+        //A changer pour que ca soit plus scalable
+        playerTransform = GameObject.Find("Player").transform;
         currentState.EnterState(this);
+
     }
 
     private void Update()
@@ -46,6 +49,7 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
     {
         if(currentHp <= 0) 
         {
+            WaveManager.Instance.nbEnnemiAlive--;
             Destroy(gameObject);
         }
     }
