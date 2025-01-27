@@ -111,7 +111,7 @@ public class WaveManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("gg");
+                //Implement Win
             }
         }
     }
