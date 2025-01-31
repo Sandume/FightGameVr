@@ -44,7 +44,6 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
 
     public void SwitchState(StateRangeEnemy state)
     {
-        Debug.Log(state);
         currentState = state;
         state.EnterState(this);
     }
@@ -63,11 +62,18 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
             {
                 GameManager.Instance.coverPoint[idCoverPointUsed].isOccupied = false;
             }
-            Destroy(gameObject);
+            EnableRagdoll();
         }
     }
 
-    //Obligatoire de le laisser ici pour le instantiate (monobehavior)
+    private void EnableRagdoll()
+    {
+        transform.GetChild(0).GetComponent<Animator>().enabled = false;
+        agent.enabled = false;
+        this.enabled = false;
+    }
+
+    //Obligatoire de le laisser ici pour le instantiate (monoBehavior)
     public void Attack()
     {
         Instantiate(arrowPrefabs, arrowLunchTransform.position, arrowLunchTransform.rotation);

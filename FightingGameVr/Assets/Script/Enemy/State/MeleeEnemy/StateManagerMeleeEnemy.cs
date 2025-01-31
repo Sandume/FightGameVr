@@ -50,7 +50,13 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
         if(currentHp <= 0) 
         {
             WaveManager.Instance.nbEnnemiAlive--;
-            Destroy(gameObject);
+            EnableRagdoll();
         }
+    }
+    private void EnableRagdoll()
+    {
+        transform.GetChild(0).GetComponent<Animator>().enabled = false;
+        agent.enabled = false;
+        this.enabled = false;
     }
 }

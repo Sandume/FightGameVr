@@ -32,18 +32,14 @@ public class ControllerKeyboard : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("attack");
-            RaycastHit hit; 
-            if(Physics.Raycast(transform.position, transform.forward, out hit, 15f))
+            RaycastHit hit;
+            if (Physics.SphereCast(transform.position + transform.up,5f, transform.forward, out hit, 15f))
             {
-                if(hit.transform.GetComponent<IDamageble>() != null)
+                if(hit.transform.GetComponentInParent<IDamageble>() != null)
                 {
-                    hit.transform.GetComponent<IDamageble>().Hit(50);
+                    hit.transform.GetComponentInParent<IDamageble>().Hit(50);
                 }
             }
-
         }
-        
     }
-
-
 }
