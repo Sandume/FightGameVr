@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     }
 
     static private GameManager instance;
+    public int score = 0; 
 
     public List<CoverPoint> coverPoint = new List<CoverPoint>();
     static public GameManager Instance
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
+    
     private void Awake()
     {
         if (instance == null)
