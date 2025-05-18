@@ -51,6 +51,7 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
     public void Hit(int damage)
     {
         currentHp -= damage;
+        animator.SetTrigger("Hit");
     }
 
     public void CheckDeath()
@@ -58,6 +59,7 @@ public class StateManagerRangeEnemy : MonoBehaviour, IDamageble
         if (currentHp <= 0)
         {
             WaveManager.Instance.nbEnnemiAlive--;
+            GameManager.Instance.score += stat.score;
             if (idCoverPointUsed != -1)
             {
                 GameManager.Instance.coverPoint[idCoverPointUsed].isOccupied = false;

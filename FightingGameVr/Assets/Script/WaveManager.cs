@@ -28,7 +28,10 @@ public class WaveManager : MonoBehaviour
 
     static private WaveManager instance;
 
+
     public int nbEnnemiAlive = 0;
+    public int CurrentWave { get => currentWave;}
+
     static public WaveManager Instance
     {
         get
@@ -42,6 +45,8 @@ public class WaveManager : MonoBehaviour
             return instance;
         }
     }
+
+
 
     private void Awake()
     {

@@ -17,3 +17,4 @@ MonoBehaviour:
   range: 3
   type: 0
   dammage: 8
+  score: 15

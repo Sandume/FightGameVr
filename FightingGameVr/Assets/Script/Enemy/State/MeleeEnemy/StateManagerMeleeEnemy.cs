@@ -43,6 +43,7 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
     public void Hit(int damage)
     {
         currentHp -= damage;
+        animator.SetTrigger("Hit");
     }
 
     public void CheckDeath() 
@@ -50,6 +51,7 @@ public class StateManagerMeleeEnemy : MonoBehaviour , IDamageble
         if(currentHp <= 0) 
         {
             WaveManager.Instance.nbEnnemiAlive--;
+            GameManager.Instance.score += stat.score;
             EnableRagdoll();
         }
     }

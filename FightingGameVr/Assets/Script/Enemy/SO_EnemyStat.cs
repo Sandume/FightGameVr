@@ -15,4 +15,5 @@ public class SO_EnemyStat : ScriptableObject
     public float range;
     public Type type;
     public int dammage;
+    public int score;
 }
